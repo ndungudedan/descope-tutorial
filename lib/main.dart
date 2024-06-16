@@ -92,7 +92,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       final options = DescopeFlowOptions(
           mobile: DescopeMobileFlowOptions(
               flowUrl:
-                  'https://auth.descope.io/login/${dotenv.get('DESCOPE_PROJECT_ID')}',
+                  'https://auth.descope.io/${dotenv.get('DESCOPE_PROJECT_ID')}?flow=sign-up-or-in&debug=true',
               deepLinkUrl: 'auth-android'),
           web: DescopeWebFlowOptions(
             flowId: 'sign-up-or-in',
@@ -117,9 +117,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
       if (!mounted) return;
       context.pushReplacementNamed('home');
-    } catch (e) {
-      print('Error: $e');
-      return;
+    } on DescopeException catch (e) {
+      switch (e) {
+        case DescopeException.wrongOTPCode:
+        case DescopeException.invalidRequest:
+        case DescopeException.flowCancelled:
+          print(e);
+        default:
+          print(e);
+      }
     }
   }
 
