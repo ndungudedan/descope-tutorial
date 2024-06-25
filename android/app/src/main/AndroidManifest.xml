@@ -30,9 +30,9 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <!-- the path should correspond with the routing paths defined in Flutter routing configuration -->
-                <data android:scheme="https" android:host="https://auth.descope.io" android:path="/auth-android" />
+                <data android:scheme="https" android:host="your.deeplink.url" android:path="/auth-android" />
                 <!-- Necessary when using magic links as an authentication option -->
-                <data android:scheme="https" android:host="https://auth.descope.io" android:path="/magiclink" />
+                <data android:scheme="https" android:host="your.deeplink.url" android:path="/magiclink" />
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.
