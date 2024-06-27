@@ -2,7 +2,6 @@ import 'package:descope_app/home_screen.dart';
 import 'package:descope_app/welcome_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:descope/descope.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
@@ -36,10 +35,15 @@ class MyApp extends StatelessWidget {
         routes: [
           GoRoute(
             path: '/',
-            builder: (_, __) =>
-                Descope.sessionManager.session?.refreshToken.isExpired == false
-                    ? const HomeScreen()
-                    : const WelcomeScreen(),
+            builder: (_, __) {
+              final Uri currentUri = Uri.base;
+              return Descope.sessionManager.session?.refreshToken.isExpired ==
+                      false
+                  ? const HomeScreen()
+                  : WelcomeScreen(
+                      code: currentUri.queryParameters['code'],
+                    );
+            },
             routes: [
               GoRoute(
                 path: 'home',

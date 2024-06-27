@@ -4,13 +4,22 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
 
 class WelcomeScreen extends StatefulWidget {
-  const WelcomeScreen({super.key});
+  final String? code;
+  const WelcomeScreen({super.key, this.code});
 
   @override
   State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    if (widget.code != null) {
+      signupOrLogin();
+    }
+  }
+
   Future<void> signupOrLogin() async {
     try {
       final options = DescopeFlowOptions(
@@ -35,12 +44,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               "box-shadow": "0px 0px 10px gray",
             },
           ));
-      final authResponse = await Descope.flow.start(options);
-      final session = DescopeSession.fromAuthenticationResponse(authResponse);
-      Descope.sessionManager.manageSession(session);
-
-      if (!mounted) return;
-      context.pushReplacementNamed('home');
+      Descope.flow.start(options).then((authResponse) {
+        final session = DescopeSession.fromAuthenticationResponse(authResponse);
+        Descope.sessionManager.manageSession(session);
+        if (!mounted) return;
+        context.pushReplacementNamed('home');
+      });
     } on DescopeException catch (e) {
       switch (e) {
         case DescopeException.wrongOTPCode:
