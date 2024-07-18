@@ -52,5 +52,5 @@ This project is the complete Flutter app for the tutorial **Add Authentication t
 - For the web:
 
     ```
-    flutter run -d chrome
+    flutter run -d web-server --web-port 8080 --web-hostname 0.0.0.0
     ```
