@@ -17,8 +17,8 @@ This project is the complete Flutter app for the tutorial **Add Authentication t
 ## Getting Started
 ### Prerequisites
 
-- A Descope account (free tier available)
-- A basic understanding of Flutter development and Dart programming
+- A [Descope account](https://www.descope.com/sign-up) (free tier available)
+- A basic understanding of Flutter development and [Dart](https://dart.dev/) programming
 - A Flutter development environment set up (IDE or command line tools)
 
 ### Running the Project Locally
