@@ -42,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'Hi, ${userInfo!.name}!',
+              'Hi, ${userInfo.name}!',
               textAlign: TextAlign.center,
             ),
             Text('Your roles in the company are: ${roles}'),
