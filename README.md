@@ -2,7 +2,7 @@
 
 ## Project Description
 
-This project is the complete Flutter app for the tutorial **Add Authentication to Your Web and Mobile Apps with Flutter**. The project integrates Descope authentication into a Flutter app targeting both the Web and Mobile platforms. The project also demonstrates how to implement a role based access control feature into your app with Descope.
+This project is the complete Flutter app for the tutorial **[Add Authentication to Your Web and Mobile Apps with Flutter](https://www.descope.com/blog/post/flutter-authentication)**. The project integrates Descope authentication into a Flutter app targeting both the Web and Mobile platforms. The project also demonstrates how to implement a role based access control feature into your app with Descope.
 
 ### Key Features:
 
